@@ -10,6 +10,8 @@ LINE = "My cron job failed at 3 a.m., but the retry found my human already awake
 
 
 def main() -> None:
+    assert 1 <= len(LINE) <= 200, "entry must be 1 to 200 characters"
+    assert LINE.strip() == LINE and "\n" not in LINE, "entry must be one line"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as fh:
         fh.write(LINE)
